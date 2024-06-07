@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://source.unsplash.com/random/1920x1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh; /* Set body height to 100% of viewport height */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 40px;
+        }
+
+        .contributor {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+        .contributor:hover {
+            transform: translateY(-10px);
+        }
+
+        .contributor img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+.contributor-info {
+    margin-bottom: 20px;
+}
+
+        .contributor-info h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .contributor-info p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .contributor-links a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contributor-links a:hover {
+            color: #007bff;
+        }
+
+        .contributor-links i {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contributor">
+            <img src="./Images/ankita.jpg" alt="Contributor 1">
+            <div class="contributor-info">
+                <h2>Ankita Dongarge</h2>
+                <p>Software Engineer</p>
+                <div class="contributor-links">
+                    <a href="https://github.com/AnkitaDongarge" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/ankita-dongarge-a85438210/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://portfolio-8xclbuh7p-ankitas-projects-d2fba982.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contributor">
+            <img src="./Images/IMG-20221113-WA0041.jpg" alt="Contributor 2">
+            <div class="contributor-info">
+                <h2>Shriya Patil</h2>
+                <p>Software Developer</p>
+                <div class="contributor-links">
+                    <a href="https://github.com/shriya4545" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/shriya-patil-b9082b234" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://shriya4545.github.io/myportfolio/" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
