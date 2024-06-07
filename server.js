@@ -131,10 +131,11 @@ app.get('/c/:certID', async (req, res) => {
                             background-color: #0056b3;
                         }
                     </style>
-                    
-                    <script src="public/JS/downloadcert.js"></script>
+
                 </head>
                 <body>
+                    <h3 id="name">${certificate.name}</h3>
+                    <h3 id="certid">${certificate.certID}</h3>
                     <div id="certificateDisplay">
                         <svg id="certificateTemplate" viewBox="0 0 800 600">
                             <!-- Background -->
@@ -167,7 +168,7 @@ app.get('/c/:certID', async (req, res) => {
                         <br>
                         <button id="downloadBtn">Download Png certificate here!!!</button>
                     </div>
-
+                    <script src="/JS/downloadcert.js"></script>
                 </body>
                 
             </html>

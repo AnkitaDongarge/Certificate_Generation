@@ -7,6 +7,9 @@
 //     const dateText = document.getElementById('dateText');
 //     const certIDText = document.getElementById('certID');
 //     const downloadContainer = document.getElementById('downloadContainer');
+const name = document.getElementById('name').textContent;
+const certid = document.getElementById('certid').textContent;
+console.log(name, certid);
 function svgToPng(svgElement, callback) {
         const svgData = new XMLSerializer().serializeToString(svgElement);
         const canvas = document.createElement('canvas');
@@ -25,11 +28,11 @@ function svgToPng(svgElement, callback) {
     }
     
     
-    document.getElementById('downloadBtn').addEventListener('onclick', ()=>{
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
         svgToPng(document.getElementById('certificateTemplate'), (pngFile) => {
             const link = document.createElement('a');
             link.href = pngFile;
-            link.download = `${certificates[i].name}-certificate.png`;
+            link.download = `${name}-certificate.png`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
