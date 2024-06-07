@@ -1,0 +1,102 @@
+            <html>
+                <head>
+                    <title>Certificate - ${certificate.name}</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100vh;
+                            background-color: #f0f0f0;
+                        }
+                        #certificateDisplay {
+                            width: 800px;
+                            height: 600px;
+                            border: 1px solid #ccc;
+                        }
+                        button {
+                            background-color: #007bff;
+                            color: white;
+                            border: none;
+                            cursor: pointer;
+                            font-size: 16px;
+                            margin-left: 275px;
+                            padding: 2px;
+                            border-radius: 5px;
+                            margin-top: 5px;
+                        }
+                        
+                        button:hover {
+                            background-color: #0056b3;
+                        }
+                    </style>
+                    
+                    
+                </head>
+                <body>
+                    <div id="certificateDisplay">
+                        <svg id="certificateTemplate" viewBox="0 0 800 600">
+                            <!-- Background -->
+                            <rect x="0" y="0" width="800" height="600" fill="#f7f7f7" />
+                            
+                            <!-- Border -->
+                            <rect x="25" y="25" width="750" height="550" fill="none" stroke="#000" stroke-width="3" />
+                            
+                            <!-- Decorative elements -->
+                            <rect x="50" y="50" width="700" height="500" fill="none" stroke="#666" stroke-dasharray="10,5" />
+                            <line x1="50" y1="100" x2="750" y2="100" stroke="#666" stroke-width="1" />
+
+                            <!-- Text content -->
+                            <text x="400" y="90" font-size="30" text-anchor="middle" fill="#333">Certificate of Course Completion</text>
+                            <text x="400" y="170" font-size="20" text-anchor="middle" fill="#555">This is to certify that</text>
+                            <text x="400" y="220" font-size="40" text-anchor="middle" fill="#000">${certificate.name}</text>
+                            <text x="400" y="270" font-size="20" text-anchor="middle" fill="#555">has successfully completed the course</text>
+                            <text x="400" y="320" font-size="20" text-anchor="middle" fill="#555">from GDSC Club</text>
+                            <text id="dateText" x="400" y="400" font-size="20" text-anchor="middle" fill="#000">${new Date(certificate.date).toLocaleDateString()}</text>
+                            
+                            <!-- Signature lines -->
+                            <line x1="200" y1="450" x2="300" y2="450" stroke="#000" />
+                            <line x1="500" y1="450" x2="600" y2="450" stroke="#000" />
+                            <text x="250" y="470" font-size="15" text-anchor="middle" fill="#555">Instructor</text>
+                            <text x="550" y="470" font-size="15" text-anchor="middle" fill="#555">Coordinator</text>
+
+                            <!-- Certificate ID -->
+                            <text id="certID" x="400" y="540" font-size="15" text-anchor="middle" fill="#555">Certificate ID: ${certificate.certID}</text>
+                        </svg>
+                        <br>
+                        <button id="downloadBtn">Download Png certificate here!!!</button>
+                    </div>
+                    <script>
+                        function svgToPng(svgElement, callback) {
+                            const svgData = new XMLSerializer().serializeToString(svgElement);
+                            const canvas = document.createElement('canvas');
+                            const svgSize = svgElement.getBoundingClientRect();
+                            canvas.width = svgSize.width;
+                            canvas.height = svgSize.height;
+                            const ctx = canvas.getContext('2d');
+                            const img = document.createElement('img');
+                            img.setAttribute('src', 'data:image/svg+xml;base64,' + btoa(svgData));
+                            
+                            img.onload = function() {
+                                ctx.drawImage(img, 0, 0);
+                                const pngFile = canvas.toDataURL('image/png');
+                                callback(pngFile);
+                            };
+                        }
+                        
+                        
+                        document.getElementById('downloadBtn').addEventListener('onclick', ()=>{
+                            svgToPng(document.getElementById('certificateTemplate'), (pngFile) => {
+                                const link = document.createElement('a');
+                                link.href = pngFile;
+                                link.download = `${certificates[i].name}-certificate.png`;
+                                document.body.appendChild(link);
+                                link.click();
+                                document.body.removeChild(link);
+                            });
+                        })
+                    </script>
+                </body>
+            </html>

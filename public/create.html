@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    
+    <link rel="stylesheet" href="./CSS/create.css">
+    <!-- Include jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<!-- Include html2pdf -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form id="certificateForm">
+            <label for="names">Names (comma-separated):</label>
+            <textarea id="names" name="names" rows="4" required></textarea>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+            
+            <button type="submit">Preview Certificates</button>
+            <h3>Tap on Create Certificates to get the link. You can download from there!!</h3>
+            <button type="submit" id="downloadPDF"> Create Certificates</button>
+
+            <button type="submit" id="SendEmails">Send Emails </button>
+        </form>
+        <div id="downloadContainer">
+            
+        </div>
+        <div id="certificateDisplay">
+            <!-- SVG Certificate will be displayed here -->
+            <svg id="certificateTemplate" viewBox="0 0 800 600">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="600" fill="#f7f7f7" />
+                
+                <!-- Border -->
+                <rect x="25" y="25" width="750" height="550" fill="none" stroke="#000" stroke-width="3" />
+                
+                <!-- Decorative elements -->
+                <rect x="50" y="50" width="700" height="500" fill="none" stroke="#666" stroke-dasharray="10,5" />
+                <line x1="50" y1="100" x2="750" y2="100" stroke="#666" stroke-width="1" />
+
+                <!-- Text content -->
+                <text x="400" y="90" font-size="30" text-anchor="middle" fill="#333">Certificate of Course Completion</text>
+                <text x="400" y="170" font-size="20" text-anchor="middle" fill="#555">This is to certify that</text>
+                <text id="nameText" x="400" y="220" font-size="40" text-anchor="middle" fill="#000">{{name}}</text>
+                <text x="400" y="270" font-size="20" text-anchor="middle" fill="#555">has successfully completed the course</text>
+                <text x="400" y="320" font-size="20" text-anchor="middle" fill="#555">from GDSC Club</text>
+                <text id="dateText" x="400" y="400" font-size="20" text-anchor="middle" fill="#000">{{date}}</text>
+                
+                <!-- Signature lines -->
+                <line x1="200" y1="450" x2="300" y2="450" stroke="#000" />
+                <line x1="500" y1="450" x2="600" y2="450" stroke="#000" />
+                <text x="250" y="470" font-size="15" text-anchor="middle" fill="#555">Instructor</text>
+                <text x="550" y="470" font-size="15" text-anchor="middle" fill="#555">Coordinator</text>
+
+                <!-- Certificate ID -->
+                <text id="certID" x="400" y="540" font-size="15" text-anchor="middle" fill="#555">Certificate ID: {{certID}}</text>
+            </svg>
+        </div>
+    </div>
+
+    <script src="./JS/create.js"></script>
+</body>
+</html>
