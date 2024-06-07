@@ -13,8 +13,8 @@
       }
     ],
     "env": {
-      "MONGODB_URI": "@mongodb_uri",
-      "LEAD_PASSWORD": "@lead_password"
+      "MONGODB_URI": "mongodb+srv://khushi14khush:BC0x7y6fJJSp7wFf@cluster0.0giddj2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+      "LEAD_PASSWORD": "yourpassword"
     }
   }
   
