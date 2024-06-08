@@ -19,9 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
         certificates = names.map(name => ({
             name,
             date,
-            certID: generateRandomCertID('GDSC')
+            certID: generateRandomCertID('GDSC'),
+            link:`${window.location.origin}/c/${certID}`
         }));
-
+            
         currentIndex = 0;
         displayCertificate(certificates[currentIndex]);
         generateDownloadLinks(certificates);
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < 10; i++) {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         }
+        console.log(text);
         return text;
     }
 
@@ -100,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // });
 
             const linkvalue = `${window.location.origin}/c/${certificates[i].certID}`;
+            console.log(linkvalue);
             const link = document.createElement('a');
             link.href = linkvalue;
             link.textContent = `Download ${certificates[i].name}'s Certificate`;
