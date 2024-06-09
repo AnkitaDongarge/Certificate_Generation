@@ -11,17 +11,33 @@ document.addEventListener('DOMContentLoaded', () => {
     let certificates = [];
     let currentIndex = 0;
 
+    // form.addEventListener('submit', async (event) => {
+    //     event.preventDefault();
+    //     const names = namesField.value.split(',').map(name => name.trim());
+    //     const date = new Date(dateField.value).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+    //     certificates = names.map(name => ({
+    //         name,
+    //         date,
+    //        // certID: generateRandomCertID('GDSC'),
+    //        certID,
+    //         link:`${window.location.origin}/c/${certID}`
+    //     }));
+
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const names = namesField.value.split(',').map(name => name.trim());
         const date = new Date(dateField.value).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 
-        certificates = names.map(name => ({
-            name,
-            date,
-            certID: generateRandomCertID('GDSC'),
-            link:`${window.location.origin}/c/${certID}`
-        }));
+        certificates = names.map(name => {
+            const certID = generateRandomCertID('GDSC');
+            return {
+                name,
+                date,
+                certID,
+                link: `${window.location.origin}/c/${certID}`
+            };
+        });
             
         currentIndex = 0;
         displayCertificate(certificates[currentIndex]);
@@ -46,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < 10; i++) {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         }
-        console.log(text);
+       
         return text;
     }
 
@@ -101,8 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
             //     downloadContainer.appendChild(link);
             // });
 
-            const linkvalue = `${window.location.origin}/c/${certificates[i].certID}`;
-            console.log(linkvalue);
+         //   const linkvalue = `${window.location.origin}/c/${certificates[i].certID}`;
+           // console.log(linkvalue);
             const link = document.createElement('a');
             link.href = linkvalue;
             link.textContent = `Download ${certificates[i].name}'s Certificate`;
